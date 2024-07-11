@@ -1,4 +1,4 @@
-export class RedisProvider {
+export class RedisLockProvider {
   client = null
   constructor(client) {
     this.client = client

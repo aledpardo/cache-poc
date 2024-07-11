@@ -1,5 +1,5 @@
 import { createClient } from 'redis'
-import { RedisProvider } from './redis-provider.js'
+import { RedisLockProvider } from './redis-lock-provider.js'
 
 const makeClient = async () => {
   const c = createClient({
@@ -17,7 +17,7 @@ const makeClient = async () => {
 
 const client = await makeClient()
 const key = 'key'
-const provider = new RedisProvider(client)
+const provider = new RedisLockProvider(client)
 const acquisition1 = await provider.acquireLockPubSub(key, 10000)
 const acquisition2 = await provider.acquireLockPubSub(key, 10000)
 acquisition2?.subscription.then(console.log).catch(console.error)
