@@ -40,7 +40,7 @@ export class RedisProvider {
       complete: (value) => {
         return this.client.set(key, value)
           .then(() => this.client.publish(`pub.${key}`, 'done'))
-          .then(() => this.#releaseLock(`lock.${key}`))
+          .then(() => this.#releaseLock(key))
           .catch(async (e) => {
             console.log(e)
             await this.client.publish(`pub.${key}`, 'done')
