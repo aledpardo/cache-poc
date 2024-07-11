@@ -49,7 +49,7 @@ export class RedisProvider {
             `pub.${key}`,
             (message) => {
               clearTimeout(id)
-              active ? subscriber. subscriber.quit().then(() => rs(message)) : rj('timeout2')
+              active ? subscriber.quit().then(() => rs(message)) : rj('timeout2')
             }).catch((reason) => {
               clearTimeout(id)
               active ? subscriber.quit().then(() => rj(reason)) : rj('timeout3')
