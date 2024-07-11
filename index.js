@@ -10,7 +10,7 @@ const makeClient = async () => {
       port: 6379,
     }
   })
-  c.on('error', err => console.log(`Redis Client ID Error`, err))
+  c.on('error', err => console.log(`Redis Client Error`, err))
   await c.connect()
   return c
 }
